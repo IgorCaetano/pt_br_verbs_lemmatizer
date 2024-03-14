@@ -1,6 +1,6 @@
 # Verb lemmatizer for brazilian portuguese language
 
-This program aims to give the infinitive form of a verb in a very fast and effective way.
+This program aims to give the infinitive form of a verb in a very fast and effective way on portuguese-BR texts.
 
 ## Quantitative information about the dataset
 
@@ -15,9 +15,10 @@ This package is installed using the command "*pip install*"
 ```bash
 pip install pt-br-verbs-lemmatizer
 ```
+For more information about this package, see it on: [Pypi](https://pypi.org/project/pt-br-verbs-lemmatizer/)
 
 ## Usage Examples
-This package was designed to be integrated with other PLN tools, in order to just give the infinitive form of a verb, ie. you need a tool to say if a word is or not a verb. To do that part of the process we highly recommend you to use the spaCy lib. Here we have a example to optimaze the tokenization of a sentence using our lemmatizer instead of spacy's with some time waiting results.
+This package was designed to be integrated with other NLP tools, in order to say if a word is or is not a verb we highly recommend you to use the spaCy lib model trained on portuguese corpus.
 
 ### Simple usage
 
@@ -63,18 +64,18 @@ This package was designed to be integrated with other PLN tools, in order to jus
 ```
 
 ## How it was built
-- First of all we downloaded the Base TeP 2.0 database, which gave us X number of verbs after filtering it. 
+- First of all we downloaded the [Base TeP 2.0 database](http://www.nilc.icmc.usp.br/tep2/), which gave us X number of verbs after filtering it. 
 - After that we went to the list of most popular verbs used on portuguese present on https://www.conjugacao.com.br/verbos-populares/ and web scraped the 5000 verbs there.
-- We compare to the list we have from the Base TeP 2.0, adding the ones who doesn't match.
+- We compare to the list we had from the Base TeP 2.0, adding the ones who doesn't match.
 - Then we start web scraping the inflections of all the verbs we got, also using the [conjugacao website](https://www.conjugacao.com.br).
 - Some additional steps were taken during the scraping process, we add a bunch of inflections endins to be prepared for almost every cenario (except the wrong writening).
 - Some examples of that is the female form of -lo, -o, -no, etc... which are -la, -a, -na, etc...
-- Finally we start to build our dictionary architecture to store all that verbs and that could search into it very quickly. Then we just preenchemos, which is available at the folder "dataset".
+- Finally we start to build our dictionary architecture to store all that verbs and that could search into it very quickly. Then we just fill it, which is available at the folder "dataset".
 
-_Observation: It is possible to find some wrong inflection verbs inside our dataset, we try out many ways to be highly prepared, but, as we don't have a portuguese grammar teacher on the team, we may have commited some mistakes, but, just to be clear, we have more than just the common inflection verbs. If you notice any wrong word or some trouble during the execution of this package, please contact us!_
+_Observation: It is possible to find some wrong inflection verbs inside our dataset, we try out many ways to be highly prepared, but, as we don't have a portuguese grammar teacher on board, we may have committed some mistakes. But, just to be clear, we have more than just the common inflection verbs. If you notice any wrong word or some trouble during the execution of this package, please contact us!_
 
 ## Tests against the giant **[spaCy](https://spacy.io/)** - **[lemmatizer](https://spacy.io/api/lemmatizer)** - **[portuguese trained model](https://spacy.io/models/pt)**:
-Now we are going to see some tests related to the results spaCy has in his lemmatization and the execution time to find that lemmatized verb, comparing to this program.
+Now we are going to see some tests related to the results spaCy has in his lemmatization and the execution time to find that lemmatized verb, comparing to our program.
 
 <details>
   <summary>Installing and importing spaCy process  <i>(click to expand)</i></summary>
@@ -194,7 +195,131 @@ Now we are going to see some tests related to the results spaCy has in his lemma
 
 So, as we can see, although spaCy has better searching times (but we are very close to it), many times it mistakes the lemmatized verbs. To be honest, for my personal tests, almost every time a verb has hyphen "-" spaCy starts to make some confusion. 
 
-I want to make it clear: spaCy is one of, if not the, best NLP library available at the moment. What I tried to do was improve the replacements of the inflected verb for the infinitive verb. So, if you want to lemmatize your verbs with much more accuracy I suggest you mix the spaCy and pt-br-verbs-lemmatizer to get the bests results on your portuguese-BR texts!
+I want to make it clear: spaCy is one of, if not the, best NLP library available at the moment. What I tried to do was improve the replacements of the inflected verb for the infinitive verb. So, if you want to lemmatize your verbs with much more accuracy I suggest you mix the spaCy and **pt-br-verbs-lemmatizer** to get the bests results on your portuguese-BR texts!
+
+### Tokenizing using spaCy's lemmatizer
+
+```python
+    texto = '''Tem-se que ter muito cuidado com isso. Tu recomendarias o que? 
+    Ele apresentava-se como queria. Foi bom tê-lo por perto!
+    Tu fosse no show ontem? Eu estava olhando e apreciava-a muito.
+    Esperava-se que ele chegaria mais cedo.'''
+
+    doc = nlp(texto)
+
+    tokenization = []
+
+    print('Verbs:')
+
+    t1 = time.time()
+
+    for token in doc:
+    token_text = token.orth_
+    if not (token.is_punct or token.is_space):
+        if token.pos_ == 'VERB':
+        print(token_text)
+        token_text = token.lemma_
+        tokenization.append(token_text.lower())
+
+    t2 = time.time()
+
+    print('\n')
+    print(tokenization)
+    print(f'\nTime: {t2-t1}')
+
+
+    >>>'''Verbs:
+        Tem-se
+        ter
+        Tu
+        apresentava-se
+        queria
+        tê-lo
+        olhando
+        apreciava-a
+        Esperava-se
+        chegaria'''
+
+
+        ['tem-se', 'que', 'ter', 'muito', 'cuidado', 'com', 'isso', 'tu', 
+        'recomendarias', 'o', 'que', 'ele', 'apresentar se', 'como', 'querer', 
+        'foi', 'bom', 'ter ele', 'por', 'perto', 'tu', 'fosse', 'no', 'show', 
+        'ontem', 'eu', 'estava', 'olhar', 'e', 'apreciava-r', 'muito', 'esperava-se', 
+        'que', 'ele', 'chegar', 'mais', 'cedo']
+
+        'Time: 0.0021452903747558594'
+```
+
+### Tokenizing using our lemmatizer
+
+```python
+    texto = '''Tem-se que ter muito cuidado com isso. Tu recomendarias o que? 
+    Ele apresentava-se como queria. Foi bom tê-lo por perto!
+    Tu fosse no show ontem? Eu estava olhando e apreciava-a muito.
+    Esperava-se que ele chegaria mais cedo.'''
+
+    doc = nlp(texto)
+
+    tokenization = []
+
+    print('Verbs:')
+
+    t1 = time.time()
+
+    for token in doc:
+    token_text = token.orth_
+    if not (token.is_punct or token.is_space):
+        if token.pos_ == 'VERB':
+        print(token_text)
+        token_text = lemmatize(token_text)
+        tokenization.append(token_text.lower())
+
+    t2 = time.time()
+
+    print('\n')
+    print(tokenization)
+    print(f'\nTime: {t2-t1}')
+
+
+    >>>'''Verbs:
+        Tem-se
+        ter
+        Tu
+        apresentava-se
+        queria
+        tê-lo
+        olhando
+        apreciava-a
+        Esperava-se
+        chegaria'''
+
+
+        ['ter', 'que', 'ter', 'muito', 'cuidado', 'com', 'isso', 'tu', 
+        'recomendarias', 'o', 'que', 'ele', 'apresentar', 'como', 'querer', 
+        'foi', 'bom', 'ter', 'por', 'perto', 'tu', 'fosse', 'no', 'show', 
+        'ontem', 'eu', 'estava', 'olhar', 'e', 'apreciar', 'muito', 'esperar', 
+        'que', 'ele', 'chegar', 'mais', 'cedo']
+
+        'Time: 0.0023202896118164062'
+```
+
+_The time is not suppose to be so exact for these cases. For more exact statistic we may try it out much more times and make a mean, for example._
+
+### Some verbs weren't found, but we would lemmatize then properly:
+
+```python
+    print(lemmatize('recomendarias'))
+    print(lemmatize('tê-lo'))
+    print(lemmatize('fosse'))
+    print(lemmatize('estava'))
+    print(lemmatize('apreciava-a'))
+
+    >>>'''recomendar
+        ter
+        ir
+        estar
+        apreciar'''
+```
 
 ## Authors
 
