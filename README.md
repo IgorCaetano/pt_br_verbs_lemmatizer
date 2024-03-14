@@ -30,10 +30,12 @@ This package was designed to be integrated with other NLP tools, in order to say
   verb_lemma = lemmatize(verb)
 
   print(verb_lemma)
+```
 
+Output:
 
-
-  >>>'apresentar'
+```python
+  'apresentar'
 ```
 
 ### Execution time
@@ -56,11 +58,13 @@ This package was designed to be integrated with other NLP tools, in order to say
 
   print(verb_lemma)
   print(f'Duration: {duration} seconds')
+```
 
+Output:
 
-
-  >>>'apresentar'
-     'Duration: 0.00047889 seconds'
+```python
+  'apresentar'
+  'Duration: 0.00047889 seconds'
 ```
 
 ## How it was built
@@ -130,66 +134,66 @@ Now we are going to see some tests related to the results spaCy has in his lemma
   <br><br>
   
   ```python
-    Verb identified: jogar
-    spaCy: jogar 0.00021591 seconds.
-    Mine: jogar 0.00191703 seconds.
-    ----------------------------------------
-    Verb identified: espero
-    spaCy: esperar 0.00014153 seconds.
-    Mine: esperar 0.00021949 seconds.
-    ----------------------------------------
-    Verb identified: saindo
-    spaCy: sair 0.00013509 seconds.
-    Mine: sair 0.0001792 seconds.
-    ----------------------------------------
-    Verb identified: Gostaria
-    spaCy: Gostaria 0.00014081 seconds.
-    Mine: gostar 0.00018969 seconds.
-    ----------------------------------------
-    Verb identified: abrir
-    spaCy: abrir 0.0001389 seconds.
-    Mine: abrir 0.00023022 seconds.
-    ----------------------------------------
-    Verb identified: será
-    spaCy: ser 0.00020018 seconds.
-    Mine: ser 0.00017014 seconds.
-    ----------------------------------------
-    Verb identified: vê
-    spaCy: ver 6.261e-05 seconds.
-    Mine: ver 0.00018539 seconds.
-    ----------------------------------------
-    Verb identified: Quero
-    spaCy: querer 0.00096145 seconds.
-    Mine: querer 0.0001966 seconds.
-    ----------------------------------------
-    Verb identified: apresentá-la
-    spaCy: apresentá-la 0.00013962 seconds.
-    Mine: apresentar 0.00027146 seconds.
-    ----------------------------------------
-    Verb identified: tinha
-    spaCy: ter 0.00013342 seconds.
-    Mine: ter 0.00016847 seconds.
-    ----------------------------------------
-    Verb identified: consigo
-    spaCy: consigo 0.00016179 seconds.
-    Mine: conseguir 0.00019159 seconds.
-    ----------------------------------------
-    Verb identified: ter
-    spaCy: ter 0.00014439 seconds.
-    Mine: ter 0.00023308 seconds.
-    ----------------------------------------
-    Verb identified: apresentá-la-ia
-    spaCy: apresentá-la-ia 5.569e-05 seconds.
-    Mine: apresentar 0.00023594 seconds.
-    ----------------------------------------
-    Verb identified: Olhando
-    spaCy: Olhando 0.00017633 seconds.
-    Mine: olhar 0.00023808 seconds.
-    ----------------------------------------
-    Verb identified: observava
-    spaCy: observar 0.00013556 seconds.
-    Mine: observar 0.00020494 seconds.
-    ----------------------------------------
+    '''Verb identified: jogar
+      spaCy: jogar 0.00021591 seconds.
+      Mine: jogar 0.00191703 seconds.
+      ----------------------------------------
+      Verb identified: espero
+      spaCy: esperar 0.00014153 seconds.
+      Mine: esperar 0.00021949 seconds.
+      ----------------------------------------
+      Verb identified: saindo
+      spaCy: sair 0.00013509 seconds.
+      Mine: sair 0.0001792 seconds.
+      ----------------------------------------
+      Verb identified: Gostaria
+      spaCy: Gostaria 0.00014081 seconds.
+      Mine: gostar 0.00018969 seconds.
+      ----------------------------------------
+      Verb identified: abrir
+      spaCy: abrir 0.0001389 seconds.
+      Mine: abrir 0.00023022 seconds.
+      ----------------------------------------
+      Verb identified: será
+      spaCy: ser 0.00020018 seconds.
+      Mine: ser 0.00017014 seconds.
+      ----------------------------------------
+      Verb identified: vê
+      spaCy: ver 6.261e-05 seconds.
+      Mine: ver 0.00018539 seconds.
+      ----------------------------------------
+      Verb identified: Quero
+      spaCy: querer 0.00096145 seconds.
+      Mine: querer 0.0001966 seconds.
+      ----------------------------------------
+      Verb identified: apresentá-la
+      spaCy: apresentá-la 0.00013962 seconds.
+      Mine: apresentar 0.00027146 seconds.
+      ----------------------------------------
+      Verb identified: tinha
+      spaCy: ter 0.00013342 seconds.
+      Mine: ter 0.00016847 seconds.
+      ----------------------------------------
+      Verb identified: consigo
+      spaCy: consigo 0.00016179 seconds.
+      Mine: conseguir 0.00019159 seconds.
+      ----------------------------------------
+      Verb identified: ter
+      spaCy: ter 0.00014439 seconds.
+      Mine: ter 0.00023308 seconds.
+      ----------------------------------------
+      Verb identified: apresentá-la-ia
+      spaCy: apresentá-la-ia 5.569e-05 seconds.
+      Mine: apresentar 0.00023594 seconds.
+      ----------------------------------------
+      Verb identified: Olhando
+      spaCy: Olhando 0.00017633 seconds.
+      Mine: olhar 0.00023808 seconds.
+      ----------------------------------------
+      Verb identified: observava
+      spaCy: observar 0.00013556 seconds.
+      Mine: observar 0.00020494 seconds.
+      ----------------------------------------'''
   ```
 </details>
 
@@ -226,28 +230,31 @@ I want to make it clear: spaCy is one of, if not the, best NLP library available
     print('\n')
     print(tokenization)
     print(f'\nTime: {t2-t1}')
+```
+
+Output:
+
+```python
+    '''Verbs:
+      Tem-se
+      ter
+      Tu
+      apresentava-se
+      queria
+      tê-lo
+      olhando
+      apreciava-a
+      Esperava-se
+      chegaria'''
 
 
-    >>>'''Verbs:
-        Tem-se
-        ter
-        Tu
-        apresentava-se
-        queria
-        tê-lo
-        olhando
-        apreciava-a
-        Esperava-se
-        chegaria'''
+      ['tem-se', 'que', 'ter', 'muito', 'cuidado', 'com', 'isso', 'tu', 
+      'recomendarias', 'o', 'que', 'ele', 'apresentar se', 'como', 'querer', 
+      'foi', 'bom', 'ter ele', 'por', 'perto', 'tu', 'fosse', 'no', 'show', 
+      'ontem', 'eu', 'estava', 'olhar', 'e', 'apreciava-r', 'muito', 'esperava-se', 
+      'que', 'ele', 'chegar', 'mais', 'cedo']
 
-
-        ['tem-se', 'que', 'ter', 'muito', 'cuidado', 'com', 'isso', 'tu', 
-        'recomendarias', 'o', 'que', 'ele', 'apresentar se', 'como', 'querer', 
-        'foi', 'bom', 'ter ele', 'por', 'perto', 'tu', 'fosse', 'no', 'show', 
-        'ontem', 'eu', 'estava', 'olhar', 'e', 'apreciava-r', 'muito', 'esperava-se', 
-        'que', 'ele', 'chegar', 'mais', 'cedo']
-
-        'Time: 0.0021452903747558594'
+      'Time: 0.0021452903747558594'
 ```
 
 ### Tokenizing using our lemmatizer
@@ -280,27 +287,31 @@ I want to make it clear: spaCy is one of, if not the, best NLP library available
     print(tokenization)
     print(f'\nTime: {t2-t1}')
 
+```
 
-    >>>'''Verbs:
-        Tem-se
-        ter
-        Tu
-        apresentava-se
-        queria
-        tê-lo
-        olhando
-        apreciava-a
-        Esperava-se
-        chegaria'''
+Output:
+
+```python
+    '''Verbs:
+      Tem-se
+      ter
+      Tu
+      apresentava-se
+      queria
+      tê-lo
+      olhando
+      apreciava-a
+      Esperava-se
+      chegaria'''
 
 
-        ['ter', 'que', 'ter', 'muito', 'cuidado', 'com', 'isso', 'tu', 
-        'recomendarias', 'o', 'que', 'ele', 'apresentar', 'como', 'querer', 
-        'foi', 'bom', 'ter', 'por', 'perto', 'tu', 'fosse', 'no', 'show', 
-        'ontem', 'eu', 'estava', 'olhar', 'e', 'apreciar', 'muito', 'esperar', 
-        'que', 'ele', 'chegar', 'mais', 'cedo']
+      ['ter', 'que', 'ter', 'muito', 'cuidado', 'com', 'isso', 'tu', 
+      'recomendarias', 'o', 'que', 'ele', 'apresentar', 'como', 'querer', 
+      'foi', 'bom', 'ter', 'por', 'perto', 'tu', 'fosse', 'no', 'show', 
+      'ontem', 'eu', 'estava', 'olhar', 'e', 'apreciar', 'muito', 'esperar', 
+      'que', 'ele', 'chegar', 'mais', 'cedo']
 
-        'Time: 0.0023202896118164062'
+      'Time: 0.0023202896118164062'
 ```
 
 _The time is not suppose to be so exact for these cases. For more exact statistic we may try it out much more times and make a mean, for example._
@@ -313,7 +324,11 @@ _The time is not suppose to be so exact for these cases. For more exact statisti
     print(lemmatize('fosse'))
     print(lemmatize('estava'))
     print(lemmatize('apreciava-a'))
+```
 
+Output:
+
+```python
     >>>'''recomendar
         ter
         ir
