@@ -1,0 +1,1 @@
+from .main import lemmatize,verbs_dic
