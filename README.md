@@ -343,6 +343,13 @@ Output:
 
 # Special credits to:
 - **[Base TeP 2.0 database](http://www.nilc.icmc.usp.br/tep2/)**
+ 
+ DIAS-DA-SILVA, B.C.; MORAES, H.R.; OLIVEIRA, M.F.; HASEGAWA, R.; AMORIM, D.A.; PASCHOALINO, C.; NASCIMENTO, A.C. (2000). Construção de um thesaurus eletrônico para o português do Brasil. PROCESSAMENTO COMPUTACIONAL DO PORTUGUÊS ESCRITO E FALADO (PROPOR), Vol. 4, pp. 1-10.
+ 
+ DIAS-DA-SILVA, B.C.; MORAES, H.R. (2003). A construção de um thesaurus eletrônico para o português do Brasil. ALFA, Vol. 47, N. 2, pp. 101-115.  
+ MAZIERO, E.G.; PARDO, T.A.S.; DI FELIPPO, A.; DIAS-DA-SILVA, B.C. (2008). A Base de Dados Lexical e a Interface Web do TeP 2.0 - Thesaurus Eletrônico para o Português do Brasil. VI WORKSHOP EM TECNOLOGIA DA INFORMAÇÃO E DA LINGUAGEM HUMANA (TIL), pp. 390-392.  
+ OLIVEIRA H.G.; Santos D.; Gomes P. (2008). Extracção de relações semânticas entre palavras a partir de um dicionário: primeira avaliação. ENVIADO PARA APRECIAÇÃO A LINGUAMÁTICA 3 (2010).  
+ BARROS, C. D. Antonímia nos adjetivos descritivos do português do Brasil: uma proposta de análise e representação. 2010. 89 f. Dissertação (Mestrado em Linguística) – Universidade Federal de São Carlos, São Carlos, 2010.
 - **[conjucagao.com.br website](https://www.conjugacao.com.br/)**
 
 ## Used by
