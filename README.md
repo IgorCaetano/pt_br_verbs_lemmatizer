@@ -351,6 +351,9 @@ Output:
  OLIVEIRA H.G.; Santos D.; Gomes P. (2008). Extracção de relações semânticas entre palavras a partir de um dicionário: primeira avaliação. ENVIADO PARA APRECIAÇÃO A LINGUAMÁTICA 3 (2010).  
  BARROS, C. D. Antonímia nos adjetivos descritivos do português do Brasil: uma proposta de análise e representação. 2010. 89 f. Dissertação (Mestrado em Linguística) – Universidade Federal de São Carlos, São Carlos, 2010.
 - **[conjucagao.com.br website](https://www.conjugacao.com.br/)**
+CONJUGACAO. Conjução: Conjugação de Verbos, c2024. Página inicial. Disponível em: <https://www.conjugacao.com.br/>. Acesso em: X de mar. de 2024.
+
+VERBOS. In: CONJUGAÇÃO. 7Graus, c2024. Disponível em: https://www.conjugacao.com.br/. Acesso em: X mar. 2024.
 
 ## Used by
 
