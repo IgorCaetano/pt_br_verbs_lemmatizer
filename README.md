@@ -23,48 +23,48 @@ This package was designed to be integrated with other NLP tools, in order to say
 ### Simple usage
 
 ```python
-  from pt_br_verbs_lemmatizer import lemmatize
+from pt_br_verbs_lemmatizer import lemmatize
 
-  verb = 'apresentava'
+verb = 'apresentava'
 
-  verb_lemma = lemmatize(verb)
+verb_lemma = lemmatize(verb)
 
-  print(verb_lemma)
+print(verb_lemma)
 ```
 
 Output:
 
 ```python
-  'apresentar'
+'apresentar'
 ```
 
 ### Execution time
 
 ```python
-  from pt_br_verbs_lemmatizer import lemmatize
-  import time
+from pt_br_verbs_lemmatizer import lemmatize
+import time
 
-  verb = 'apresentá-lo-ia'
+verb = 'apresentá-lo-ia'
 
-  t1 = time.time()
+t1 = time.time()
 
-  verb_lemma = lemmatize(verb)
+verb_lemma = lemmatize(verb)
 
-  time.sleep(0.1)
+time.sleep(0.1)
 
-  t2 = time.time()
+t2 = time.time()
 
-  duration = round((t2-t1-0.1),8)
+duration = round((t2-t1-0.1),8)
 
-  print(verb_lemma)
-  print(f'Duration: {duration} seconds')
+print(verb_lemma)
+print(f'Duration: {duration} seconds')
 ```
 
 Output:
 
 ```python
-  'apresentar'
-  'Duration: 0.00047889 seconds'
+'apresentar'
+'Duration: 0.00047889 seconds'
 ```
 
 ## How it was built
@@ -96,104 +96,104 @@ Now we are going to see some tests related to the results spaCy has in his lemma
 </details>
 
 ```python
-    from pt_br_verbs_lemmatizer import lemmatize
+from pt_br_verbs_lemmatizer import lemmatize
 
-    texto = '''Hoje vou jogar bola e espero que você esteja saindo com seus amigos também.
-    Gostaria de abrir a janela, será que você vê o céu? Quero apresentá-la para meus pais.
-    Eu tinha duas casas, agora só consigo ter uma. Eu apresentá-la-ia para vocês ontem!
-    Olhando para ele que observava ela.'''
+texto = '''Hoje vou jogar bola e espero que você esteja saindo com seus amigos também.
+Gostaria de abrir a janela, será que você vê o céu? Quero apresentá-la para meus pais.
+Eu tinha duas casas, agora só consigo ter uma. Eu apresentá-la-ia para vocês ontem!
+Olhando para ele que observava ela.'''
 
-    doc = nlp(texto)
+doc = nlp(texto)
 
-    for token in doc:
+for token in doc:
 
-    if token.pos_ == 'VERB':
-        print('Verb identified:',token.orth_)
-        t1 = time.time()
-        verb_lemma_spacy = token.lemma_
-        time.sleep(0.1)
-        t2 = time.time()
+if token.pos_ == 'VERB':
+    print('Verb identified:',token.orth_)
+    t1 = time.time()
+    verb_lemma_spacy = token.lemma_
+    time.sleep(0.1)
+    t2 = time.time()
 
-        duration_spacy = round((t2-t1-0.1),8)
+    duration_spacy = round((t2-t1-0.1),8)
 
-        print('spaCy:',verb_lemma_spacy,duration_spacy,'seconds.')
+    print('spaCy:',verb_lemma_spacy,duration_spacy,'seconds.')
 
-        t1 = time.time()
-        verb_lemma_mine = lemmatize(token.orth_)
-        time.sleep(0.1)
-        t2 = time.time()
+    t1 = time.time()
+    verb_lemma_mine = lemmatize(token.orth_)
+    time.sleep(0.1)
+    t2 = time.time()
 
-        duration_mine = round((t2-t1-0.1),8)
-        
-        print('Mine:',verb_lemma_mine,duration_mine,'seconds.')
+    duration_mine = round((t2-t1-0.1),8)
+    
+    print('Mine:',verb_lemma_mine,duration_mine,'seconds.')
 
-        print('-'*40)
+    print('-'*40)
 ```
 <details>
   <summary>Full Output  <i>(click to expand)</i></summary>
   <br><br>
   
   ```python
-    '''Verb identified: jogar
-      spaCy: jogar 0.00021591 seconds.
-      Mine: jogar 0.00191703 seconds.
-      ----------------------------------------
-      Verb identified: espero
-      spaCy: esperar 0.00014153 seconds.
-      Mine: esperar 0.00021949 seconds.
-      ----------------------------------------
-      Verb identified: saindo
-      spaCy: sair 0.00013509 seconds.
-      Mine: sair 0.0001792 seconds.
-      ----------------------------------------
-      Verb identified: Gostaria
-      spaCy: Gostaria 0.00014081 seconds.
-      Mine: gostar 0.00018969 seconds.
-      ----------------------------------------
-      Verb identified: abrir
-      spaCy: abrir 0.0001389 seconds.
-      Mine: abrir 0.00023022 seconds.
-      ----------------------------------------
-      Verb identified: será
-      spaCy: ser 0.00020018 seconds.
-      Mine: ser 0.00017014 seconds.
-      ----------------------------------------
-      Verb identified: vê
-      spaCy: ver 6.261e-05 seconds.
-      Mine: ver 0.00018539 seconds.
-      ----------------------------------------
-      Verb identified: Quero
-      spaCy: querer 0.00096145 seconds.
-      Mine: querer 0.0001966 seconds.
-      ----------------------------------------
-      Verb identified: apresentá-la
-      spaCy: apresentá-la 0.00013962 seconds.
-      Mine: apresentar 0.00027146 seconds.
-      ----------------------------------------
-      Verb identified: tinha
-      spaCy: ter 0.00013342 seconds.
-      Mine: ter 0.00016847 seconds.
-      ----------------------------------------
-      Verb identified: consigo
-      spaCy: consigo 0.00016179 seconds.
-      Mine: conseguir 0.00019159 seconds.
-      ----------------------------------------
-      Verb identified: ter
-      spaCy: ter 0.00014439 seconds.
-      Mine: ter 0.00023308 seconds.
-      ----------------------------------------
-      Verb identified: apresentá-la-ia
-      spaCy: apresentá-la-ia 5.569e-05 seconds.
-      Mine: apresentar 0.00023594 seconds.
-      ----------------------------------------
-      Verb identified: Olhando
-      spaCy: Olhando 0.00017633 seconds.
-      Mine: olhar 0.00023808 seconds.
-      ----------------------------------------
-      Verb identified: observava
-      spaCy: observar 0.00013556 seconds.
-      Mine: observar 0.00020494 seconds.
-      ----------------------------------------'''
+  '''Verb identified: jogar
+    spaCy: jogar 0.00021591 seconds.
+    Mine: jogar 0.00191703 seconds.
+    ----------------------------------------
+    Verb identified: espero
+    spaCy: esperar 0.00014153 seconds.
+    Mine: esperar 0.00021949 seconds.
+    ----------------------------------------
+    Verb identified: saindo
+    spaCy: sair 0.00013509 seconds.
+    Mine: sair 0.0001792 seconds.
+    ----------------------------------------
+    Verb identified: Gostaria
+    spaCy: Gostaria 0.00014081 seconds.
+    Mine: gostar 0.00018969 seconds.
+    ----------------------------------------
+    Verb identified: abrir
+    spaCy: abrir 0.0001389 seconds.
+    Mine: abrir 0.00023022 seconds.
+    ----------------------------------------
+    Verb identified: será
+    spaCy: ser 0.00020018 seconds.
+    Mine: ser 0.00017014 seconds.
+    ----------------------------------------
+    Verb identified: vê
+    spaCy: ver 6.261e-05 seconds.
+    Mine: ver 0.00018539 seconds.
+    ----------------------------------------
+    Verb identified: Quero
+    spaCy: querer 0.00096145 seconds.
+    Mine: querer 0.0001966 seconds.
+    ----------------------------------------
+    Verb identified: apresentá-la
+    spaCy: apresentá-la 0.00013962 seconds.
+    Mine: apresentar 0.00027146 seconds.
+    ----------------------------------------
+    Verb identified: tinha
+    spaCy: ter 0.00013342 seconds.
+    Mine: ter 0.00016847 seconds.
+    ----------------------------------------
+    Verb identified: consigo
+    spaCy: consigo 0.00016179 seconds.
+    Mine: conseguir 0.00019159 seconds.
+    ----------------------------------------
+    Verb identified: ter
+    spaCy: ter 0.00014439 seconds.
+    Mine: ter 0.00023308 seconds.
+    ----------------------------------------
+    Verb identified: apresentá-la-ia
+    spaCy: apresentá-la-ia 5.569e-05 seconds.
+    Mine: apresentar 0.00023594 seconds.
+    ----------------------------------------
+    Verb identified: Olhando
+    spaCy: Olhando 0.00017633 seconds.
+    Mine: olhar 0.00023808 seconds.
+    ----------------------------------------
+    Verb identified: observava
+    spaCy: observar 0.00013556 seconds.
+    Mine: observar 0.00020494 seconds.
+    ----------------------------------------'''
   ```
 </details>
 
@@ -204,114 +204,114 @@ I want to make it clear: spaCy is one of, if not the, best NLP library available
 ### Tokenizing using spaCy's lemmatizer
 
 ```python
-    texto = '''Tem-se que ter muito cuidado com isso. Tu recomendarias o que? 
-    Ele apresentava-se como queria. Foi bom tê-lo por perto!
-    Tu fosse no show ontem? Eu estava olhando e apreciava-a muito.
-    Esperava-se que ele chegaria mais cedo.'''
+texto = '''Tem-se que ter muito cuidado com isso. Tu recomendarias o que? 
+Ele apresentava-se como queria. Foi bom tê-lo por perto!
+Tu fosse no show ontem? Eu estava olhando e apreciava-a muito.
+Esperava-se que ele chegaria mais cedo.'''
 
-    doc = nlp(texto)
+doc = nlp(texto)
 
-    tokenization = []
+tokenization = []
 
-    print('Verbs:')
+print('Verbs:')
 
-    t1 = time.time()
+t1 = time.time()
 
-    for token in doc:
-    token_text = token.orth_
-    if not (token.is_punct or token.is_space):
-        if token.pos_ == 'VERB':
-        print(token_text)
-        token_text = token.lemma_
-        tokenization.append(token_text.lower())
+for token in doc:
+token_text = token.orth_
+if not (token.is_punct or token.is_space):
+    if token.pos_ == 'VERB':
+    print(token_text)
+    token_text = token.lemma_
+    tokenization.append(token_text.lower())
 
-    t2 = time.time()
+t2 = time.time()
 
-    print('\n')
-    print(tokenization)
-    print(f'\nTime: {t2-t1}')
+print('\n')
+print(tokenization)
+print(f'\nTime: {t2-t1}')
 ```
 
 Output:
 
 ```python
-    '''Verbs:
-      Tem-se
-      ter
-      Tu
-      apresentava-se
-      queria
-      tê-lo
-      olhando
-      apreciava-a
-      Esperava-se
-      chegaria'''
+'''Verbs:
+  Tem-se
+  ter
+  Tu
+  apresentava-se
+  queria
+  tê-lo
+  olhando
+  apreciava-a
+  Esperava-se
+  chegaria'''
 
 
-      ['tem-se', 'que', 'ter', 'muito', 'cuidado', 'com', 'isso', 'tu', 
-      'recomendarias', 'o', 'que', 'ele', 'apresentar se', 'como', 'querer', 
-      'foi', 'bom', 'ter ele', 'por', 'perto', 'tu', 'fosse', 'no', 'show', 
-      'ontem', 'eu', 'estava', 'olhar', 'e', 'apreciava-r', 'muito', 'esperava-se', 
-      'que', 'ele', 'chegar', 'mais', 'cedo']
+  ['tem-se', 'que', 'ter', 'muito', 'cuidado', 'com', 'isso', 'tu', 
+  'recomendarias', 'o', 'que', 'ele', 'apresentar se', 'como', 'querer', 
+  'foi', 'bom', 'ter ele', 'por', 'perto', 'tu', 'fosse', 'no', 'show', 
+  'ontem', 'eu', 'estava', 'olhar', 'e', 'apreciava-r', 'muito', 'esperava-se', 
+  'que', 'ele', 'chegar', 'mais', 'cedo']
 
-      'Time: 0.0021452903747558594'
+  'Time: 0.0021452903747558594'
 ```
 
 ### Tokenizing using our lemmatizer
 
 ```python
-    texto = '''Tem-se que ter muito cuidado com isso. Tu recomendarias o que? 
-    Ele apresentava-se como queria. Foi bom tê-lo por perto!
-    Tu fosse no show ontem? Eu estava olhando e apreciava-a muito.
-    Esperava-se que ele chegaria mais cedo.'''
+texto = '''Tem-se que ter muito cuidado com isso. Tu recomendarias o que? 
+Ele apresentava-se como queria. Foi bom tê-lo por perto!
+Tu fosse no show ontem? Eu estava olhando e apreciava-a muito.
+Esperava-se que ele chegaria mais cedo.'''
 
-    doc = nlp(texto)
+doc = nlp(texto)
 
-    tokenization = []
+tokenization = []
 
-    print('Verbs:')
+print('Verbs:')
 
-    t1 = time.time()
+t1 = time.time()
 
-    for token in doc:
-    token_text = token.orth_
-    if not (token.is_punct or token.is_space):
-        if token.pos_ == 'VERB':
-        print(token_text)
-        token_text = lemmatize(token_text)
-        tokenization.append(token_text.lower())
+for token in doc:
+token_text = token.orth_
+if not (token.is_punct or token.is_space):
+    if token.pos_ == 'VERB':
+    print(token_text)
+    token_text = lemmatize(token_text)
+    tokenization.append(token_text.lower())
 
-    t2 = time.time()
+t2 = time.time()
 
-    print('\n')
-    print(tokenization)
-    print(f'\nTime: {t2-t1}')
+print('\n')
+print(tokenization)
+print(f'\nTime: {t2-t1}')
 
 ```
 
 Output:
 
 ```python
-    '''Verbs:
-      Tem-se
-      ter
-      Tu
-      apresentava-se
-      queria
-      tê-lo
-      olhando
-      apreciava-a
-      Esperava-se
-      chegaria'''
+'''Verbs:
+  Tem-se
+  ter
+  Tu
+  apresentava-se
+  queria
+  tê-lo
+  olhando
+  apreciava-a
+  Esperava-se
+  chegaria'''
 
 
-      ['ter', 'que', 'ter', 'muito', 'cuidado', 'com', 'isso', 'tu', 
-      'recomendarias', 'o', 'que', 'ele', 'apresentar', 'como', 'querer', 
-      'foi', 'bom', 'ter', 'por', 'perto', 'tu', 'fosse', 'no', 'show', 
-      'ontem', 'eu', 'estava', 'olhar', 'e', 'apreciar', 'muito', 'esperar', 
-      'que', 'ele', 'chegar', 'mais', 'cedo']
+  ['ter', 'que', 'ter', 'muito', 'cuidado', 'com', 'isso', 'tu', 
+  'recomendarias', 'o', 'que', 'ele', 'apresentar', 'como', 'querer', 
+  'foi', 'bom', 'ter', 'por', 'perto', 'tu', 'fosse', 'no', 'show', 
+  'ontem', 'eu', 'estava', 'olhar', 'e', 'apreciar', 'muito', 'esperar', 
+  'que', 'ele', 'chegar', 'mais', 'cedo']
 
-      'Time: 0.0023202896118164062'
+  'Time: 0.0023202896118164062'
 ```
 
 _The time is not suppose to be so exact for these cases. For more exact statistic we may try it out much more times and make a mean, for example._
@@ -319,41 +319,43 @@ _The time is not suppose to be so exact for these cases. For more exact statisti
 ### Some verbs weren't found, but we would lemmatize then properly:
 
 ```python
-    print(lemmatize('recomendarias'))
-    print(lemmatize('tê-lo'))
-    print(lemmatize('fosse'))
-    print(lemmatize('estava'))
-    print(lemmatize('apreciava-a'))
+print(lemmatize('recomendarias'))
+print(lemmatize('tê-lo'))
+print(lemmatize('fosse'))
+print(lemmatize('estava'))
+print(lemmatize('apreciava-a'))
 ```
 
 Output:
 
 ```python
-    >>>'''recomendar
-        ter
-        ir
-        estar
-        apreciar'''
+'''recomendar
+    ter
+    ir
+    estar
+    apreciar'''
 ```
 
 ## Authors
 
 - [@IgorCaetano](https://github.com/IgorCaetano)
 
+## Used by
+
+- This project is used in the text pre-processing stage in the **[WOKE](https://github.com/iaehistoriaUFSC/Repositorio_UFSC)** project of the Grupo de Estudos e Pesquisa em IA e História ("Study and Research Group on AI and History") at UFSC ("Federal University of Santa Catarina").
 
 # Special credits to:
 - **[Base TeP 2.0 database](http://www.nilc.icmc.usp.br/tep2/)**
  
- DIAS-DA-SILVA, B.C.; MORAES, H.R.; OLIVEIRA, M.F.; HASEGAWA, R.; AMORIM, D.A.; PASCHOALINO, C.; NASCIMENTO, A.C. (2000). Construção de um thesaurus eletrônico para o português do Brasil. PROCESSAMENTO COMPUTACIONAL DO PORTUGUÊS ESCRITO E FALADO (PROPOR), Vol. 4, pp. 1-10.
- 
- DIAS-DA-SILVA, B.C.; MORAES, H.R. (2003). A construção de um thesaurus eletrônico para o português do Brasil. ALFA, Vol. 47, N. 2, pp. 101-115.  
- MAZIERO, E.G.; PARDO, T.A.S.; DI FELIPPO, A.; DIAS-DA-SILVA, B.C. (2008). A Base de Dados Lexical e a Interface Web do TeP 2.0 - Thesaurus Eletrônico para o Português do Brasil. VI WORKSHOP EM TECNOLOGIA DA INFORMAÇÃO E DA LINGUAGEM HUMANA (TIL), pp. 390-392.  
- OLIVEIRA H.G.; Santos D.; Gomes P. (2008). Extracção de relações semânticas entre palavras a partir de um dicionário: primeira avaliação. ENVIADO PARA APRECIAÇÃO A LINGUAMÁTICA 3 (2010).  
- BARROS, C. D. Antonímia nos adjetivos descritivos do português do Brasil: uma proposta de análise e representação. 2010. 89 f. Dissertação (Mestrado em Linguística) – Universidade Federal de São Carlos, São Carlos, 2010.
 - **[conjucagao.com.br website](https://www.conjugacao.com.br/)**
 
-VERBOS. In: CONJUGAÇÃO. 7Graus, c2024. Disponível em: https://www.conjugacao.com.br/verbos-populares/. Acesso em: X mar. 2024.
+# References
 
-## Used by
-
-- This project is used in the text pre-processing stage in the **[WOKE](https://github.com/iaehistoriaUFSC/Repositorio_UFSC)** project of the Grupo de Estudos e Pesquisa em IA e História ("Study and Research Group on AI and History") at UFSC ("Federal University of Santa Catarina").
+DIAS-DA-SILVA, B.C.; MORAES, H.R.; OLIVEIRA, M.F.; HASEGAWA, R.; AMORIM, D.A.; PASCHOALINO, C.; NASCIMENTO, A.C. (2000). Construção de um thesaurus eletrônico para o português do Brasil. PROCESSAMENTO COMPUTACIONAL DO PORTUGUÊS ESCRITO E FALADO (PROPOR), Vol. 4, pp. 1-10.
+ 
+DIAS-DA-SILVA, B.C.; MORAES, H.R. (2003). A construção de um thesaurus eletrônico para o português do Brasil. ALFA, Vol. 47, N. 2, pp. 101-115.  
+MAZIERO, E.G.; PARDO, T.A.S.; DI FELIPPO, A.; DIAS-DA-SILVA, B.C. (2008). A Base de Dados Lexical e a Interface Web do TeP 2.0 - Thesaurus Eletrônico para o Português do Brasil. VI WORKSHOP EM TECNOLOGIA DA INFORMAÇÃO E DA LINGUAGEM HUMANA (TIL), pp. 390-392.  
+OLIVEIRA H.G.; Santos D.; Gomes P. (2008). Extracção de relações semânticas entre palavras a partir de um dicionário: primeira avaliação. ENVIADO PARA APRECIAÇÃO A LINGUAMÁTICA 3 (2010).  
+BARROS, C. D. Antonímia nos adjetivos descritivos do português do Brasil: uma proposta de análise e representação. 2010. 89 f. Dissertação (Mestrado em Linguística) – Universidade Federal de São Carlos, São Carlos, 2010.
+ 
+VERBOS. In: CONJUGAÇÃO. 7Graus, c2024. Disponível em: https://www.conjugacao.com.br/verbos-populares/. Acesso em: 6 mar. 2024.
