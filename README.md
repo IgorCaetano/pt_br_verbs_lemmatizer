@@ -358,4 +358,4 @@ MAZIERO, E.G.; PARDO, T.A.S.; DI FELIPPO, A.; DIAS-DA-SILVA, B.C. (2008). A Base
 OLIVEIRA H.G.; Santos D.; Gomes P. (2008). Extracção de relações semânticas entre palavras a partir de um dicionário: primeira avaliação. ENVIADO PARA APRECIAÇÃO A LINGUAMÁTICA 3 (2010).  
 BARROS, C. D. Antonímia nos adjetivos descritivos do português do Brasil: uma proposta de análise e representação. 2010. 89 f. Dissertação (Mestrado em Linguística) – Universidade Federal de São Carlos, São Carlos, 2010.
  
-VERBOS. In: CONJUGAÇÃO. 7Graus, c2024. Disponível em: https://www.conjugacao.com.br/verbos-populares/. Acesso em: 6 mar. 2024.
+VERBOS. In: CONJUGAÇÃO. 7Graus, c2024. Disponível em: https://www.conjugacao.com.br/verbos-populares/. Acesso em: 11 abril 2024.
